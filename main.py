@@ -10,18 +10,20 @@ def generate(lista):
 def checkCond(pasw):
     lista = [bool(any(letter in pasw for letter in letters)), bool(any(letter in pasw for letter in uppers)),
              bool(any(letter in pasw for letter in numbers)), bool(any(letter in pasw for letter in special))]
-    return lista
+    print("Sprawdzanie warunków")
+    return all(lista)
 
 
 letters = list(string.ascii_lowercase)
 uppers = list(string.ascii_uppercase)
 numbers = list('0123456789')
-special = list('!@#$%^&*()?')
+special = list('!@#$%^&*')
 
 lista = letters + uppers + numbers + special
 
-ans = generate(lista)
+while True:
+    ans = generate(lista)
+    if checkCond(ans):
+        break
 
-temp = False
-
-print(checkCond(ans))
+print("Wygenerowane hasło:\n" + "\t" + ans)
